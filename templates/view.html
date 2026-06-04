@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Nominees</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef3ff;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2d6cdf;
+        }
+
+        table {
+            margin: auto;
+            width: 95%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #2d6cdf;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f7ff;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            margin: 2px;
+            display: inline-block;
+            color: white;
+        }
+
+        .edit {
+            background: #28a745;
+        }
+
+        .delete {
+            background: #dc3545;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            background: #2d6cdf;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .back:hover {
+            background: #1b4db3;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🏦 Bank Nominee Details</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Relation</th>
+        <th>Account Number</th>
+        <th>Share %</th>
+        <th>Nominee Type</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for n in nominees %}
+    <tr>
+        <td>{{ n.name }}</td>
+        <td>{{ n.gender }}</td>
+        <td>{{ n.relation }}</td>
+        <td>{{ n.account }}</td>
+        <td>{{ n.share_percentage }}</td>
+        <td>{{ n.nominee_type }}</td>
+
+        <td>
+            <a class="edit" href="/edit/{{ loop.index0 }}">Edit</a>
+            <a class="delete" href="/delete/{{ loop.index0 }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<a class="back" href="/">⬅ Back to Home</a>
+
+</body>
+</html>
